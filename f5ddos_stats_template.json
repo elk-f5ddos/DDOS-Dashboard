@@ -1,0 +1,354 @@
+{
+  "index_templates" : [
+    {
+      "name" : "template-stats",
+      "index_template" : {
+        "index_patterns" : [
+          "f5-stats-*"
+        ],
+        "template" : {
+          "mappings" : {
+            "properties" : {
+              "attack_type" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "user_process" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "bd_drops_1h" : {
+                "type" : "long"
+              },
+              "most_recent_agg_applied_time" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "ba_stats" : {
+                "type" : "long"
+              },
+              "context_name" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "total_drop_rate" : {
+                "coerce" : true,
+                "index" : true,
+                "ignore_malformed" : false,
+                "store" : false,
+                "type" : "long",
+                "doc_values" : true
+              },
+              "most_recent_ba_attack_id" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "profile_name" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "bd_drops_1m" : {
+                "type" : "long"
+              },
+              "stats" : {
+                "type" : "long"
+              },
+              "ba_drops_1h" : {
+                "type" : "long"
+              },
+              "ba_drops_1m" : {
+                "type" : "long"
+              },
+              "int_dropped_bytes_rate" : {
+                "type" : "long"
+              },
+              "mitigation_curr_all_tmm" : {
+                "coerce" : true,
+                "index" : true,
+                "ignore_malformed" : false,
+                "store" : false,
+                "type" : "double",
+                "doc_values" : true
+              },
+              "bd_stats_rate" : {
+                "type" : "long"
+              },
+              "most_recent_applied_time" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "ba_drops" : {
+                "type" : "long"
+              },
+              "mitigation_ba_all_tmm" : {
+                "type" : "double"
+              },
+              "ba_stats_rate" : {
+                "type" : "long"
+              },
+              "dropped_bytes" : {
+                "type" : "long"
+              },
+              "vector_name" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "bd_stats" : {
+                "type" : "long"
+              },
+              "mitigation_ba" : {
+                "type" : "long"
+              },
+              "protocol_type" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "wl_count" : {
+                "type" : "long"
+              },
+              "mitigation_ba_low" : {
+                "type" : "long"
+              },
+              "status" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "agg_detected" : {
+                "type" : "long"
+              },
+              "ba_detected" : {
+                "type" : "long"
+              },
+              "hw_offload" : {
+                "type" : "long"
+              },
+              "bd_detected" : {
+                "type" : "long"
+              },
+              "int_dropped_bytes" : {
+                "type" : "long"
+              },
+              "signature_accuracy" : {
+                "type" : "long"
+              },
+              "attack_detected" : {
+                "type" : "long"
+              },
+              "mitigation_bd_low" : {
+                "type" : "long"
+              },
+              "total_dropped_bytes_rate" : {
+                "coerce" : true,
+                "index" : true,
+                "ignore_malformed" : false,
+                "store" : false,
+                "type" : "double",
+                "doc_values" : true
+              },
+              "dropped_bytes_rate" : {
+                "type" : "long"
+              },
+              "mitigation_ba_high" : {
+                "type" : "long"
+              },
+              "ba_drops_rate" : {
+                "type" : "long"
+              },
+              "bd_drops" : {
+                "type" : "long"
+              },
+              "drops" : {
+                "type" : "long"
+              },
+              "drops_1m" : {
+                "type" : "long"
+              },
+              "mitigation_bd" : {
+                "type" : "long"
+              },
+              "stats_rate" : {
+                "type" : "long"
+              },
+              "bdos_mitigation_config" : {
+                "type" : "long"
+              },
+              "most_recent_agg_attack_id" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "drops_1h" : {
+                "type" : "long"
+              },
+              "stats_1h_samples" : {
+                "type" : "long"
+              },
+              "mitigation_low" : {
+                "type" : "long"
+              },
+              "attack_count" : {
+                "type" : "long"
+              },
+              "detection" : {
+                "type" : "long"
+              },
+              "stats_1m" : {
+                "type" : "long"
+              },
+              "bd_drops_rate" : {
+                "type" : "long"
+              },
+              "most_recent_bd_attack_id" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "mitigation_bd_all_tmm" : {
+                "type" : "double"
+              },
+              "drops_rate" : {
+                "type" : "long"
+              },
+              "most_recent_attack_id" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "mitigation_high" : {
+                "type" : "long"
+              },
+              "int_drops" : {
+                "type" : "long"
+              },
+              "creation_attack_id" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "mitigation_bd_high" : {
+                "type" : "long"
+              },
+              "stats_1h" : {
+                "type" : "long"
+              },
+              "detection_ba" : {
+                "type" : "long"
+              },
+              "int_drops_1h" : {
+                "type" : "long"
+              },
+              "int_drops_1m" : {
+                "type" : "long"
+              },
+              "detection_bd" : {
+                "type" : "long"
+              },
+              "mitigation_curr" : {
+                "type" : "long"
+              },
+              "most_recent_bd_applied_time" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              },
+              "bypass_count" : {
+                "type" : "long"
+              },
+              "detection_all_tmm" : {
+                "coerce" : true,
+                "index" : true,
+                "ignore_malformed" : false,
+                "store" : false,
+                "type" : "double",
+                "doc_values" : true
+              },
+              "int_drops_rate" : {
+                "type" : "long"
+              },
+              "most_recent_ba_applied_time" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "ignore_above" : 256,
+                    "type" : "keyword"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composed_of" : [ ]
+      }
+    }
+  ]
+}
