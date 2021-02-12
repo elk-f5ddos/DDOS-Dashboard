@@ -1,6 +1,7 @@
 # DDOS-Dashboard
-this is the step by step guide to use this repository
+This is the step by step guide to use this repository
 the following is description of the files:
+
 	export.ndjson	: this is file includes dashboard, visualizations and other objects
 	logstash.conf	: this file contains the logstash configuration to parse syslog messages from bigip
 	template_1	: this is the template for fields of the ddos_dashboard
