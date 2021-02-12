@@ -72,15 +72,3 @@ source s_f5ddos { udp(ip(0.0.0.0) port(5555) flags(no-hostname)); };
 destination d_f5ddos { file("/var/log/f5ddos.log" owner("root") group("root") perm(0644)); };
 log { source(s_f5ddos); destination(d_f5ddos); };
 ###############################################################
-
-
- 
-BIG-IP configuration
-
-
- 
-Exposing service outside
-Install NGINX
-
- 
-
