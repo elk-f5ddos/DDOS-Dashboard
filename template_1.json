@@ -66,77 +66,11 @@ PUT _index_template/template_1
               "@timestamp" : {
                 "type" : "date"
               },
-              "syncookieRejects" : {
+              "SuspiciousPackets" : {
                 "type" : "integer"
               },
-        	  "latitude" : {
+        	   "latitude" : {
                     "type" : "float"
-                  },
-                  "continent_code" : {
-                    "type" : "text",
-                    "fields" : {
-                      "keyword" : {
-                        "ignore_above" : 256,
-                        "type" : "keyword"
-                      }
-                    }
-                  },
-                  "city_name" : {
-                    "type" : "text",
-                    "fields" : {
-                      "keyword" : {
-                        "ignore_above" : 256,
-                        "type" : "keyword"
-                      }
-                    }
-                  },
-                  "country_code2" : {
-                    "type" : "text",
-                    "fields" : {
-                      "keyword" : {
-                        "ignore_above" : 256,
-                        "type" : "keyword"
-                      }
-                    }
-                  },
-                  "country_name" : {
-                    "type" : "text",
-                    "fields" : {
-                      "keyword" : {
-                        "ignore_above" : 256,
-                        "type" : "keyword"
-                      }
-                    }
-                  },
-                  "dma_code" : {
-                    "type" : "long"
-                  },
-                  "country_code3" : {
-                    "type" : "text",
-                    "fields" : {
-                      "keyword" : {
-                        "ignore_above" : 256,
-                        "type" : "keyword"
-                      }
-                    }
-                  },
-                  "region_name" : {
-                    "type" : "text",
-                    "fields" : {
-                      "keyword" : {
-                        "ignore_above" : 256,
-                        "type" : "keyword"
-                      }
-                    }
-                  },
-                  "postal_code" : {
-                    "type" : "text",
-                    "fields" : {
-                      "keyword" : {
-                        "ignore_above" : 256,
-                        "type" : "keyword"
-                      }
-                    }
                   },
                   "longitude" : {
                     "type" : "float"
