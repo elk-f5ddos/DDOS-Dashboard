@@ -58,4 +58,5 @@ the following is description of the files:
 	###############################################################
 
 ## Important note for stats dashboard
-	Please change the mutate { add_field => {"tmm" => "4"}} to match the number of tmms in your system
+	Please change this line in the logstash to match the number of tmms in your system, in this example the system have 4 tmms
+	mutate { add_field => {"tmm" => "4"}} 
