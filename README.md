@@ -1,4 +1,4 @@
-# DDOS-Dashboard
+## DDOS-Dashboard
 This is the step by step guide to use this repository
 the following is description of the files:
 
@@ -44,15 +44,18 @@ the following is description of the files:
 
 ### Install syslog-ng
 
-sudo apt-get install syslog-ng
+	sudo apt-get install syslog-ng
 
-Add the following in /etc/syslog-ng/conf.d/syslog-ng.conf
+	Add the following in /etc/syslog-ng/conf.d/syslog-ng.conf
 
-syslog-ng.conf
+	syslog-ng.conf
 
-Make sure the following are in the file:
-############### F5 syslog-ng config ########################################
-source s_f5ddos { udp(ip(0.0.0.0) port(5555) flags(no-hostname)); };
-destination d_f5ddos { file("/var/log/f5ddos.log" owner("root") group("root") perm(0644)); };
-log { source(s_f5ddos); destination(d_f5ddos); };
-###############################################################
+	Make sure the following are in the file:
+	############### F5 syslog-ng config ########################################
+	source s_f5ddos { udp(ip(0.0.0.0) port(5555) flags(no-hostname)); };
+	destination d_f5ddos { file("/var/log/f5ddos.log" owner("root") group("root") perm(0644)); };
+	log { source(s_f5ddos); destination(d_f5ddos); };
+	###############################################################
+
+## Important note for stats dashboard
+	Please change the mutate { add_field => {"tmm" => "4"}} to match the number of tmms in your system
