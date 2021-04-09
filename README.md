@@ -14,7 +14,7 @@ the following is description of the files:
 	echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 	sudo apt-get update && sudo apt-get install elasticsearch
 	sudo -i service elasticsearch start
-	curl -X GET "localhost:9200/?pretty”
+	curl -X GET localhost:9200/?pretty
 ### Kibana (install)
 	wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 	sudo apt-get update && sudo apt-get install kibana
