@@ -67,7 +67,8 @@ the following is description of the files:
 	tmsh create sys log-config destination splunk SPLUNK_LOG_DEST forward-to HSL_LOG_DEST
 	tmsh create sys log-config publisher KIBANA_LOG_PUBLISHER destinations add { SPLUNK_LOG_DEST }
 	tmsh create security log profile LOG_PROFILE dos-network-publisher KIBANA_LOG_PUBLISHER protocol-dns-dos-publisher KIBANA_LOG_PUBLISHER protocol-sip-dos-publisher KIBANA_LOG_PUBLISHER ip-intelligence { log-translation-fields enabled log-publisher KIBANA_LOG_PUBLISHER } traffic-statistics { syncookies enabled log-publisher KIBANA_LOG_PUBLISHER }
-
 	tmsh modify security log profile global-network dos-network-publisher KIBANA_LOG_PUBLISHER ip-intelligence { log-geo enabled log-rtbh enabled log-scrubber enabled log-shun enabled log-translation-fields enabled log-publisher KIBANA_LOG_PUBLISHER } protocol-dns-dos-publisher KIBANA_LOG_PUBLISHER protocol-sip-dos-publisher KIBANA_LOG_PUBLISHER traffic-statistics { log-publisher KIBANA_LOG_PUBLISHER syncookies enabled }
+
+![Kibana-Logging](https://user-images.githubusercontent.com/58518999/114186057-b1855d80-9946-11eb-80e4-783a524a226d.png)
 
 
