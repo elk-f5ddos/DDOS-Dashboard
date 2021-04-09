@@ -57,6 +57,17 @@ the following is description of the files:
 	log { source(s_f5ddos); destination(d_f5ddos); };
 	###############################################################
 
+## Enable logging for DOS_stats
+	modify the crontab on BIG-IP and add: 
+	* * * * * tmctl -c dos_stat -s context_name,vector_name,attack_detected,stats_rate,drops_rate,int_drops_rate,ba_stats_rate,ba_drops_rate,bd_stats_rate,bd_drops_rate,detection,mitigation_low,mitigation_high,detection_ba,mitigation_ba_low,mitigation_ba_high,detection_bd,mitigation_bd_low,mitigation_bd_high | grep -v "context_name" | logger -n 1.1.1.1 --udp --port 5556
+
+	Modify IP and port appropiate.
+	
+	Better approach then using the crontab is to use an external monitor:
+	https://support.f5.com/csp/article/K71282813
+	
+	Anyhow, keep in mind more frequently logging generates more data on you logging device!
+
 ## Important note for stats dashboard
 	Please change this line in the logstash to match the number of tmms in your system, in this example the system have 4 tmms
 	mutate { add_field => {"tmm" => "4"}} 
