@@ -52,9 +52,13 @@ the following is description of the files:
 
 	Make sure the following are in the file:
 	############### F5 syslog-ng config ########################################
-	source s_f5ddos { udp(ip(0.0.0.0) port(5555) flags(no-hostname)); };
-	destination d_f5ddos { file("/var/log/f5ddos.log" owner("root") group("root") perm(0644)); };
-	log { source(s_f5ddos); destination(d_f5ddos); };
+	source s_f5ddos_stats { udp(ip(0.0.0.0) port(5556) flags(no-hostname)); };
+	destination d_f5ddos_stats { file("/var/log/f5ddos_stats.log" owner("root") group("root") perm(0644)); };
+	log { source(s_f5ddos_stats); destination(d_f5ddos_stats); };
+
+	source s_f5ddos_kv { udp(ip(0.0.0.0) port(5557) flags(no-hostname)); };
+	destination d_f5ddos_kv { file("/var/log/f5ddos_kv.log" owner("root") group("root") perm(0644)); };
+	log { source(s_f5ddos_kv); destination(d_f5ddos_kv); };
 	###############################################################
 
 ## Enable logging for DOS_stats
