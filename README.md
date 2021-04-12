@@ -57,8 +57,8 @@ the following is description of the files:
 	log { source(s_f5ddos_stats); destination(d_f5ddos_stats); };
 
 	source s_f5ddos_kv { udp(ip(0.0.0.0) port(5557) flags(no-hostname)); };
-	destination d_f5ddos_kv { file("/var/log/f5ddos_kv.log" owner("root") group("root") perm(0644)); };
-	log { source(s_f5ddos_kv); destination(d_f5ddos_kv); };
+	destination d_f5ddos_kv { file("/var/log/f5ddos.log" owner("root") group("root") perm(0644)); };
+	log { source(s_f5ddos_kv); destination(d_f5ddos); };
 	###############################################################
 
 ## Enable logging for DOS_stats
