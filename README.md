@@ -40,9 +40,7 @@ the following is description of the files:
 	Import the dashboards and visualization by importing the export.ndjson file, by going to Stack Management then Saved Objects, and click on import and upload the file
  
 	Run Logstash using the following from cli 
-	cd /usr/share/logstash/bin/
-	./logstash -f /etc/logstash/conf.d/logstash.conf
-
+	sudo systemctl start logstash.service
 
 ### Install syslog-ng
 
