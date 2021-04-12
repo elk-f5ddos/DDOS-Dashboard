@@ -28,6 +28,7 @@ the following is description of the files:
 ### Running configuration and import objects
 
 	Copy the logstash.conf in /etc/logstash/conf.d/
+	
 	In the kibana WEBUI (http://localhost:5601) go to devtools, you need to apply index templates for ddos dashboard and stats dashboard:
 	For ddos dashboard:
 		“Paste the content of template_1.json file”
@@ -35,6 +36,7 @@ the following is description of the files:
 	For stats dashboard:
 		“Paste the content of template-stats.json file”
 		“Press play-button”
+		
 	Import the dashboards and visualization by importing the export.ndjson file, by going to Stack Management then Saved Objects, and click on import and upload the file
  
 	Run Logstash using the following from cli 
