@@ -1,4 +1,4 @@
-PUT _index_templates/template-stats
+PUT _index_template/template-stats
 {
         "index_patterns" : [
           "f5-stats-*"
