@@ -39,17 +39,22 @@ This are the relvant template files:
 	echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
 	sudo apt-get update && sudo apt-get install elasticsearch
 	sudo -i service elasticsearch start
+	sudo systemctl enable elasticsearch
 	curl -X GET localhost:9200/?pretty
+	
 ### Kibana (install)
 	wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 	sudo apt-get update && sudo apt-get install kibana
 	sudo -i service kibana start
+	sudo systemctl enable kibana
 	you can access kibana from browser http://localhost:5601
 	If you want to make it accessable from "external", then change "server.host" in /etc/kibana/kibana.yml to the IP address of the ELK server
+	
 ### Logstash (install)
 	sudo apt-get install openjdk-8-jre-headless
 	sudo wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 	sudo apt-get update && sudo apt-get install logstash
+	
 ### Publishing kibana with NGINX (optional)
 	sudo apt-get install nginx
 	echo "kibadmin:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
