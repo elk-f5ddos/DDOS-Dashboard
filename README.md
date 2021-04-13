@@ -65,6 +65,10 @@ the following is description of the files:
  
 	Run Logstash using the following from cli 
 	sudo systemctl start logstash.service
+	
+## Important note for stats dashboard
+	Please change this line in the logstash to match the number of tmms in your system, in this example the system have 4 tmms
+	mutate { add_field => {"tmm" => "4"}} 	
 
 ### Install syslog-ng
 
@@ -95,10 +99,6 @@ the following is description of the files:
 	https://support.f5.com/csp/article/K71282813
 	
 	Anyhow, keep in mind more frequently logging generates more data on you logging device!
-
-## Important note for stats dashboard
-	Please change this line in the logstash to match the number of tmms in your system, in this example the system have 4 tmms
-	mutate { add_field => {"tmm" => "4"}} 
 	
 ## Commands to configure logging on BIG-IP
 	tmsh create ltm pool pool_log_server members add { 1.1.1.1:5557 }
