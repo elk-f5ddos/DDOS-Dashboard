@@ -49,7 +49,7 @@ This are the relvant template files:
 	sudo apt-get install openjdk-8-jre-headless
 	sudo wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 	sudo apt-get update && sudo apt-get install logstash
-### Publishing kibana with NGINX
+### Publishing kibana with NGINX (optional)
 	sudo apt-get install nginx
 	echo "kibadmin:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
 	mv /etc/nginx/sites-available/default /etc/nginx/sites-available/original_backup_default
