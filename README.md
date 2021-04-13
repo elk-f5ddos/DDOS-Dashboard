@@ -24,6 +24,30 @@ the following is description of the files:
 	sudo apt-get install openjdk-8-jre-headless
 	sudo wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 	sudo apt-get update && sudo apt-get install logstash
+### Publishing kibana with NGINX
+	sudo apt-get install nginx
+	echo "kibadmin:`openssl passwd -apr1`" | sudo tee -a /etc/nginx/htpasswd.users
+	mv /etc/nginx/sites-available/default /etc/nginx/sites-available/original_backup_default
+	nano /etc/nginx/sites-available/default
+	Put the following into the new NGINX configuration file you just created, putting Kibana’s IP address in the server_name field:
+	server {
+    		listen 80;
+    		server_name <YourKibanaIP>;
+   	 	auth_basic "Restricted Access";
+    		auth_basic_user_file /etc/nginx/htpasswd.users;
+    	location / {
+        	proxy_pass http://localhost:5601;
+        	proxy_http_version 1.1;
+        	proxy_set_header Upgrade $http_upgrade;
+        	proxy_set_header Connection 'upgrade';
+        	proxy_set_header Host $host;
+        	proxy_cache_bypass $http_upgrade;        
+    		}
+	}
+	nginx -t
+	systemctl enable nginx
+	systemctl start nginx
+
  
 ### Running configuration and import objects
 
