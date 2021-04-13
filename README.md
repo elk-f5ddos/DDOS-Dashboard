@@ -99,10 +99,8 @@ This are the relvant template files:
 ### Install syslog-ng
 
 	sudo apt-get install syslog-ng
-
+	
 	Add the following in /etc/syslog-ng/conf.d/syslog-ng.conf
-
-	syslog-ng.conf
 
 	Make sure the following are in the file:
 	############### F5 syslog-ng config ########################################
@@ -110,9 +108,12 @@ This are the relvant template files:
 	destination d_f5ddos_stats { file("/var/log/f5ddos_stats.log" owner("root") group("root") perm(0644)); };
 	log { source(s_f5ddos_stats); destination(d_f5ddos_stats); };
 
-	source s_f5ddos_kv { udp(ip(0.0.0.0) port(5557) flags(no-hostname)); };
-	destination d_f5ddos_kv { file("/var/log/f5ddos.log" owner("root") group("root") perm(0644)); };
-	log { source(s_f5ddos_kv); destination(d_f5ddos); };
+	source s_f5ddos { udp(ip(0.0.0.0) port(5557) flags(no-hostname)); };
+	destination d_f5ddos { file("/var/log/f5ddos.log" owner("root") group("root") perm(0644)); };
+	log { source(s_f5ddos); destination(d_f5ddos); };
 	###############################################################
-
-
+	
+	sudo touch /var/log/f5ddos_stats.log
+	sudo touch /var/log/f5ddos.log
+	
+	sudo systemctl start syslog-ng	
