@@ -54,6 +54,7 @@ This are the relvant template files:
 	sudo apt-get install openjdk-8-jre-headless
 	sudo wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 	sudo apt-get update && sudo apt-get install logstash
+	sudo systemctl enable logstash
 	
 ### Publishing kibana with NGINX (optional)
 	sudo apt-get install nginx
@@ -95,7 +96,7 @@ This are the relvant template files:
 	Import the dashboards and visualization by importing the export.ndjson file, by going to Stack Management then Saved Objects, and click on import and upload the file
  
 	Run Logstash using the following from cli 
-	sudo systemctl start logstash.service
+	sudo -i service logstash start
 	
 ## Important note for stats dashboard
 	Please change this line in the logstash to match the number of tmms in your system, in this example the system have 4 tmms
