@@ -2,14 +2,14 @@
 
 This repository is supposed to give you templates for visualization of F5 Network DDoS events within an ELK stack.
 
-This are the relvant template files:
+### Templates
 
 	export.ndjson	: this is file includes dashboard, visualizations and other objects
 	logstash.conf	: this file contains the logstash configuration to parse syslog messages from bigip
 	template_1	: this is the template for fields of the ddos_dashboard
 	template-stats	: this is the template for fileds of the ddos_stats dashboard
 
-## Commands to configure logging on BIG-IP
+### Commands to configure logging on BIG-IP
 	tmsh create ltm pool pool_log_server members add { 1.1.1.1:5557 }
 	tmsh create sys log-config destination remote-high-speed-log HSL_LOG_DEST { pool-name pool_log_server protocol udp }
 	tmsh create sys log-config destination splunk SPLUNK_LOG_DEST forward-to HSL_LOG_DEST
@@ -20,7 +20,7 @@ This are the relvant template files:
 
 ![Kibana-Logging](https://user-images.githubusercontent.com/58518999/114186432-235da700-9947-11eb-9662-67eede1773d2.png)
 
-## Enable logging for DOS_stats
+### Enable logging for DOS_stats
 	modify the crontab on BIG-IP and add: 
 	* * * * * tmctl -c dos_stat -s context_name,vector_name,attack_detected,stats_rate,drops_rate,int_drops_rate,ba_stats_rate,ba_drops_rate,bd_stats_rate,bd_drops_rate,detection,mitigation_low,mitigation_high,detection_ba,mitigation_ba_low,mitigation_ba_high,detection_bd,mitigation_bd_low,mitigation_bd_high | grep -v "context_name" | logger -n 1.1.1.1 --udp --port 5556
 
