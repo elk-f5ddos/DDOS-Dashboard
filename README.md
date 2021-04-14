@@ -42,7 +42,7 @@ This repository is supposed to give you templates for visualization of F5 Networ
 	sudo systemctl enable elasticsearch
 	curl -X GET localhost:9200/?pretty
 	
-### Kibana (install)
+### Kibana (install instructions)
 	wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 	sudo apt-get update && sudo apt-get install kibana
 	sudo -i service kibana start
@@ -50,7 +50,7 @@ This repository is supposed to give you templates for visualization of F5 Networ
 	you can access kibana from browser http://localhost:5601
 	If you want to make it accessable from "external", then change "server.host" in /etc/kibana/kibana.yml to the IP address of the ELK server
 	
-### Logstash (install)
+### Logstash (install instructions)
 	sudo apt-get install openjdk-8-jre-headless
 	sudo wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 	sudo apt-get update && sudo apt-get install logstash
@@ -93,7 +93,7 @@ This repository is supposed to give you templates for visualization of F5 Networ
 		“Paste the content of template-stats.json file”
 		“Press play-button”
 		
-	Import the dashboards and visualization by importing the export.ndjson file, by going to Stack Management then Saved Objects, and click on import and upload the file
+	Import the dashboards and visualization by importing the export.ndjson file, by going to Stack Management then Saved Objects, and 	  click on import and upload the file
  
 	Run Logstash using the following from cli 
 	sudo -i service logstash start
@@ -109,6 +109,7 @@ This repository is supposed to give you templates for visualization of F5 Networ
 	Add the following in /etc/syslog-ng/conf.d/syslog-ng.conf
 
 	Make sure the following are in the file:
+	
 	############### F5 syslog-ng config ########################################
 	source s_f5ddos_stats { udp(ip(0.0.0.0) port(5556) flags(no-hostname)); };
 	destination d_f5ddos_stats { file("/var/log/f5ddos_stats.log" owner("root") group("root") perm(0644)); };
