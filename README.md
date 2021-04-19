@@ -2,9 +2,9 @@
 
 This repository is supposed to give you templates for visualization of F5 Network DDoS events within an ELK stack.
 
-[images/image1]
+<img src="images/image1.png">
 
-[images/image2]
+<img src="images/image2.png">
 
 ### Templates
 
