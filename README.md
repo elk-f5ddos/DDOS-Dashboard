@@ -110,7 +110,7 @@ This repository is supposed to give you templates for visualization of F5 Networ
 
 	sudo apt-get install syslog-ng
 	
-	Add the following in /etc/syslog-ng/conf.d/syslog-ng.conf
+	Add the following in /etc/syslog-ng/syslog-ng.conf
 
 	Make sure the following are in the file:
 	
