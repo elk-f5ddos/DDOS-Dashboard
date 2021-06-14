@@ -14,7 +14,7 @@ This repository is supposed to give you templates for visualization of F5 Networ
 	template-stats	: this is the template for fileds of the ddos_stats dashboard
 
 ### Commands to configure logging on BIG-IP
-	tmsh create ltm pool pool_log_server members add { 1.1.1.1:5557 }
+	tmsh create ltm pool pool_log_server members add { 1.1.1.1:5558 }
 	tmsh create sys log-config destination remote-high-speed-log HSL_LOG_DEST { pool-name pool_log_server protocol udp }
 	tmsh create sys log-config destination splunk SPLUNK_LOG_DEST forward-to HSL_LOG_DEST
 	tmsh create sys log-config publisher KIBANA_LOG_PUBLISHER destinations add { SPLUNK_LOG_DEST }
@@ -26,7 +26,7 @@ This repository is supposed to give you templates for visualization of F5 Networ
 
 ### Enable logging for DOS_stats
 	modify the crontab on BIG-IP and add: 
-	* * * * * tmctl -c dos_stat -s context_name,vector_name,attack_detected,stats_rate,drops_rate,int_drops_rate,ba_stats_rate,ba_drops_rate,bd_stats_rate,bd_drops_rate,detection,mitigation_low,mitigation_high,detection_ba,mitigation_ba_low,mitigation_ba_high,detection_bd,mitigation_bd_low,mitigation_bd_high | grep -v "context_name" | logger -n 1.1.1.1 --udp --port 5556
+	* * * * * nb_of_tmms=$(tmsh show sys tmm-info | grep Sys::TMM | wc -l);tmctl -c dos_stat -s context_name,vector_name,attack_detected,stats_rate,drops_rate,int_drops_rate,ba_stats_rate,ba_drops_rate,bd_stats_rate,bd_drops_rate,detection,mitigation_low,mitigation_high,detection_ba,mitigation_ba_low,mitigation_ba_high,detection_bd,mitigation_bd_low,mitigation_bd_high | grep -v "context_name" | sed '/^$/d' | sed "s/$/,$nb_of_tmms/g" | logger -n 10.1.20.7 --udp --port 5558
 
 	Modify IP and port appropiate.
 	
