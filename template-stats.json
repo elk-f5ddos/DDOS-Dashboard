@@ -15,6 +15,20 @@ PUT _index_template/template-stats
                   }
                 }
               },
+              "tmm_count" : {
+                "coerce" : true,
+                "index" : true,
+                "ignore_malformed" : false,
+                "store" : false,
+                "type" : "integer",
+                "doc_values" : true
+              },
+              "overall_drop_rate" : {
+                "type" : "long"
+              },
+              "incoming_packet_rate" : {
+                "type" : "long"
+              },
               "user_process" : {
                 "type" : "text",
                 "fields" : {
@@ -121,7 +135,7 @@ PUT _index_template/template-stats
               "dropped_bytes" : {
                 "type" : "long"
               },
-              "vector_name" : {
+              "dos_attack_name" : {
                 "type" : "text",
                 "fields" : {
                   "keyword" : {
