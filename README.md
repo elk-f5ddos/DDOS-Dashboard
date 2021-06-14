@@ -1,6 +1,7 @@
 ## DDOS-Dashboard
 
 This repository is supposed to give you templates for visualization of F5 Network DDoS events within an ELK stack.
+It will also give you the possibility to see all relevant stats for all DoS vectors.
 
 <img src="images/image1.png">
 
