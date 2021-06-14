@@ -14,7 +14,7 @@ This repository is supposed to give you templates for visualization of F5 Networ
 	template-stats	: this is the template for fileds of the ddos_stats dashboard
 
 ### Commands to configure logging on BIG-IP
-	tmsh create ltm pool pool_log_server members add { 1.1.1.1:5558 }
+	tmsh create ltm pool pool_log_server members add { 1.1.1.1:5557 }
 	tmsh create sys log-config destination remote-high-speed-log HSL_LOG_DEST { pool-name pool_log_server protocol udp }
 	tmsh create sys log-config destination splunk SPLUNK_LOG_DEST forward-to HSL_LOG_DEST
 	tmsh create sys log-config publisher KIBANA_LOG_PUBLISHER destinations add { SPLUNK_LOG_DEST }
@@ -26,7 +26,7 @@ This repository is supposed to give you templates for visualization of F5 Networ
 
 ### Enable logging for DOS_stats
 	modify the crontab on BIG-IP and add: 
-	* * * * * nb_of_tmms=$(tmsh show sys tmm-info | grep Sys::TMM | wc -l);tmctl -c dos_stat -s context_name,vector_name,attack_detected,stats_rate,drops_rate,int_drops_rate,ba_stats_rate,ba_drops_rate,bd_stats_rate,bd_drops_rate,detection,mitigation_low,mitigation_high,detection_ba,mitigation_ba_low,mitigation_ba_high,detection_bd,mitigation_bd_low,mitigation_bd_high | grep -v "context_name" | sed '/^$/d' | sed "s/$/,$nb_of_tmms/g" | logger -n 10.1.20.7 --udp --port 5558
+	* * * * * tmctl -c dos_stat -s context_name,vector_name,attack_detected,stats_rate,drops_rate,int_drops_rate,ba_stats_rate,ba_drops_rate,bd_stats_rate,bd_drops_rate,detection,mitigation_low,mitigation_high,detection_ba,mitigation_ba_low,mitigation_ba_high,detection_bd,mitigation_bd_low,mitigation_bd_high | grep -v "context_name" | logger -n 1.1.1.1 --udp --port 5556
 
 	Modify IP and port appropiate.
 	
@@ -101,27 +101,11 @@ This repository is supposed to give you templates for visualization of F5 Networ
  
 	Run Logstash using the following from cli 
 	sudo -i service logstash start
-	
-## Important note for stats dashboard
-	Please change this line in the logstash to match the number of tmms in your system, in this example the system have 4 tmms
-	mutate { add_field => {"tmm" => "4"}} 	
 
 ### Install syslog-ng
 
 	sudo apt-get install syslog-ng
 	
-	Add the following in /etc/syslog-ng/syslog-ng.conf
-
-	Make sure the following are in the file:
-	
-	############### F5 syslog-ng config ########################################
-	source s_f5ddos_stats { udp(ip(0.0.0.0) port(5556) flags(no-hostname)); };
-	destination d_f5ddos_stats { file("/var/log/f5ddos_stats.log" owner("root") group("root") perm(0644)); };
-	log { source(s_f5ddos_stats); destination(d_f5ddos_stats); };
-
-	source s_f5ddos_kv { udp(ip(0.0.0.0) port(5557) flags(no-hostname)); };
-	destination d_f5ddos_kv { file("/var/log/f5ddos_kv.log" owner("root") group("root") perm(0644)); };
-	log { source(s_f5ddos_kv); destination(d_f5ddos_kv); };
-	###############################################################
+	Add the syslog-ng.conf in /etc/syslog-ng/syslog-ng.conf
 	
 	sudo systemctl start syslog-ng	
