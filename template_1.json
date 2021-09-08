@@ -4,6 +4,11 @@ PUT _index_template/template_1
           "f5-ddos*"
         ],
         "template" : {
+          "settings" : {
+            "index" : {
+              "default_pipeline" : "node1-pipeline"
+            }
+          },        
           "mappings" : {
             "properties" : {
         "@timestamp" : {
@@ -881,6 +886,12 @@ PUT _index_template/template_1
             }
           }
         },
+        "src_map" : {
+        	"type" : "geo_point"
+        },
+        "dst_map" : {
+        	"type" : "geo_point"
+        },        
         "xdata" : {
           "type" : "text",
           "fields" : {
