@@ -1,38 +1,41 @@
-[
-  {
-    "convert": {
-      "field": "src_geoip.location.lat",
-      "type": "string",
-      "target_field": "src_map.lat",
-      "ignore_missing": true,
-      "ignore_failure": true
+PUT _ingest/pipeline/node1-pipeline
+{
+  "processors": [
+    {
+      "convert": {
+        "field": "src_geoip.location.lat",
+        "type": "string",
+        "target_field": "src_map.lat",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "convert": {
+        "field": "src_geoip.location.lon",
+        "type": "string",
+        "target_field": "src_map.lon",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "convert": {
+        "field": "dest_geoip.location.lat",
+        "type": "string",
+        "target_field": "dst_map.lat",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "convert": {
+        "field": "dest_geoip.location.lon",
+        "type": "string",
+        "target_field": "dst_map.lon",
+        "ignore_missing": true,
+        "ignore_failure": true
+      }
     }
-  },
-  {
-    "convert": {
-      "field": "src_geoip.location.lon",
-      "type": "string",
-      "target_field": "src_map.lon",
-      "ignore_missing": true,
-      "ignore_failure": true
-    }
-  },
-  {
-    "convert": {
-      "field": "dest_geoip.location.lat",
-      "type": "string",
-      "target_field": "dst_map.lat",
-      "ignore_missing": true,
-      "ignore_failure": true
-    }
-  },
-  {
-    "convert": {
-      "field": "dest_geoip.location.lon",
-      "type": "string",
-      "target_field": "dst_map.lon",
-      "ignore_missing": true,
-      "ignore_failure": true
-    }
-  }
-]
+  ]
+}
