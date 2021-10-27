@@ -13,6 +13,7 @@ It will also give you the possibility to see all relevant stats for all DoS vect
 	logstash.conf	: this file contains the logstash configuration to parse syslog messages from bigip
 	template_1	: this is the template for fields of the ddos_dashboard
 	template-stats	: this is the template for fileds of the ddos_stats dashboard
+	node1-pipeline  : this is the request to deploy ingest pipeline
 
 ### Commands to configure logging on BIG-IP
 	tmsh create ltm pool pool_log_server members add { 1.1.1.1:5558 }
@@ -96,6 +97,9 @@ It will also give you the possibility to see all relevant stats for all DoS vect
 		“Press play-button”
 	For stats dashboard:
 		“Paste the content of template-stats.json file”
+		“Press play-button”
+	For ingest-node :
+		“Paste the content of node1-pipeline.json file”
 		“Press play-button”
 		
 	Import the dashboards and visualization by importing the export.ndjson file, by going to Stack Management then Saved Objects, and 	  click on import and upload the file
