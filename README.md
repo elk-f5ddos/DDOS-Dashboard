@@ -114,3 +114,49 @@ It will also give you the possibility to see all relevant stats for all DoS vect
 	Add the syslog-ng.conf in /etc/syslog-ng/syslog-ng.conf
 	
 	sudo systemctl start syslog-ng	
+	
+### Enabling Minimal Security Settings
+	Reference : https://www.elastic.co/guide/en/elasticsearch/reference/7.13/security-minimal-setup.html
+	Stop logstash 	   	: service logstash stop
+	Stop elasticsearch 	: service elasticsearch stop
+	Stop kibana  	   	: service kibana stop	
+	Add "xpack.security.enabled: true" in /etc/elasticsearch/elasticsearch.yml (i have added under Node section)
+	Start elasticsearch	: service elasticseach start
+	Run the password utility to generate the passwords:
+		cd /usr/bin/elasticsearch/bin
+		elasticsearch-setup-passwords auto 
+	This will generate different passwords for system users.
+	Save the generated passwords. You’ll need them to add the built-in user to Kibana and Logstash
+	#### Kibana #### 
+	Enable "elasticsearch.username: "kibana_system""  by uncommenting from kibana config file /etc/kibana/kibana.yml
+	Change to kibana bin directory : cd /usr/share/kibana/bin
+	Create Kibana keystore : ./kibana-keystore create
+	Add the password for the kibana_system user to the Kibana keystore : ./kibana-keystore add elasticsearch.password
+	Start Kibana 		: service kibana start
+	login to kibana use elastic username and password
+	go to Stack Management => security ==> Users and add your own user with the required role 
+	
+	#### Logstash ####
+	In logstash file located in /etc/logstash/conf.d/logstash add username and password as the following in the output:
+	
+	if "f5ddoskv" in [tags]{
+        elasticsearch {
+	    user => elastic
+	    password => <REPLACE BY THE PASSWORD GENERATED FOR elastic user>
+        }
+	}
+        if "f5ddos_stats" in [tags] {
+        elasticsearch {
+            user => elastic
+            password => <REPLACE BY THE PASSWORD GENERATED FOR elastic user>
+        }
+        }
+	
+	Start logstash 		: service logstash start
+	
+	
+	
+	
+	
+	
+	
