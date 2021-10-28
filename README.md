@@ -127,6 +127,7 @@ It will also give you the possibility to see all relevant stats for all DoS vect
 		elasticsearch-setup-passwords auto 
 	This will generate different passwords for system users.
 	Save the generated passwords. You’ll need them to add the built-in user to Kibana and Logstash
+	
 	#### Kibana #### 
 	Enable "elasticsearch.username: "kibana_system""  by uncommenting from kibana config file /etc/kibana/kibana.yml
 	Change to kibana bin directory : cd /usr/share/kibana/bin
