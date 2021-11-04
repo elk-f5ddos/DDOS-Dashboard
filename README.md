@@ -123,8 +123,8 @@ It will also give you the possibility to see all relevant stats for all DoS vect
 	Add "xpack.security.enabled: true" in /etc/elasticsearch/elasticsearch.yml (i have added under Node section)
 	Start elasticsearch	: service elasticseach start
 	Run the password utility to generate the passwords:
-		cd /usr/bin/elasticsearch/bin
-		elasticsearch-setup-passwords auto 
+		cd /usr/share/elasticsearch/bin
+		./elasticsearch-setup-passwords auto 
 	This will generate different passwords for system users.
 	Save the generated passwords. You’ll need them to add the built-in user to Kibana and Logstash
 	
