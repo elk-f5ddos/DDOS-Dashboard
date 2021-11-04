@@ -93,13 +93,13 @@ It will also give you the possibility to see all relevant stats for all DoS vect
 	
 	In the kibana WEBUI (http://localhost:5601) go to devtools, you need to apply index templates for ddos dashboard and stats dashboard:
 	For ddos dashboard:
-		“Paste the content of template_1.json file”
+		“Paste the content of template_1 file”
 		“Press play-button”
 	For stats dashboard:
-		“Paste the content of template-stats.json file”
+		“Paste the content of template-stats file”
 		“Press play-button”
 	For ingest-node :
-		“Paste the content of node1-pipeline.json file”
+		“Paste the content of node1-pipeline file”
 		“Press play-button”
 		
 	Import the dashboards and visualization by importing the export.ndjson file, by going to Stack Management then Saved Objects, and 	  click on import and upload the file
