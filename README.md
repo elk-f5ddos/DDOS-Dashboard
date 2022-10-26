@@ -145,8 +145,8 @@ It will also give you the possibility to see all relevant stats for all DoS vect
 	
 	if "f5ddoskv" in [tags]{
         elasticsearch {
-	    user => elastic
-	    password => <REPLACE BY THE PASSWORD GENERATED FOR elastic user>
+	    user => "elastic"
+	    password => "<REPLACE BY THE PASSWORD GENERATED FOR elastic user>"
         }
 	}
         if "f5ddos_stats" in [tags] {
