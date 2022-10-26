@@ -130,9 +130,12 @@ It will also give you the possibility to see all relevant stats for all DoS vect
 	
 	#### Kibana #### 
 	Enable "elasticsearch.username: "kibana_system""  by uncommenting from kibana config file /etc/kibana/kibana.yml
-	Change to kibana bin directory : cd /usr/share/kibana/bin
-	Create Kibana keystore : ./kibana-keystore create
-	Add the password for the kibana_system user to the Kibana keystore : ./kibana-keystore add elasticsearch.password
+	Change to kibana bin directory : 
+	cd /usr/share/kibana/bin
+	Create Kibana keystore : 
+	./kibana-keystore create
+	Add the password for the kibana_system user to the Kibana keystore : 
+	./kibana-keystore add elasticsearch.password
 	Start Kibana 		: service kibana start
 	login to kibana use elastic username and password
 	go to Stack Management => security ==> Users and add your own user with the required role 
@@ -148,8 +151,8 @@ It will also give you the possibility to see all relevant stats for all DoS vect
 	}
         if "f5ddos_stats" in [tags] {
         elasticsearch {
-            user => elastic
-            password => <REPLACE BY THE PASSWORD GENERATED FOR elastic user>
+            user => "elastic"
+            password => "<REPLACE BY THE PASSWORD GENERATED FOR elastic user>"
         }
         }
 	
